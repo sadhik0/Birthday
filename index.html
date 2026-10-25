@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Happy Birthday, Reshu</title>
   <meta name="description" content="A little birthday letter, just for Reshu.">
-  <meta name="theme-color" content="#F7D9DE">
-  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#150A0F">
+  <meta name="color-scheme" content="dark">
   <!-- Keeps search engines from listing this personal page.
        NOTE: this is NOT security. A public GitHub Pages site can be opened by anyone who has the link. -->
   <meta name="robots" content="noindex, nofollow">
@@ -199,10 +199,6 @@
         <p class="sr-only" role="status" aria-live="polite" id="hero-status"></p>
       </div>
 
-      <a class="scroll-cue" href="#wishes">
-        <span>Scroll to discover</span>
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
     </header>
 
     <main id="main">
@@ -213,10 +209,9 @@
            The second copy is aria-hidden so screen readers read the list once.
            ===================================================================== -->
       <section class="marquees" id="wishes" aria-label="Birthday wishes in many languages">
-        <div class="marquee marquee--ruby">
+        <div class="marquee marquee--top">
           <div class="marquee__track marquee__track--rtl">
             <ul class="marquee__group">
-              <li class="marquee__item" lang="en">Writing System</li>
               <li class="marquee__item" lang="en">Happy Birthday</li>
               <li class="marquee__item" lang="hi">जन्मदिन की शुभकामनाएँ</li>
               <li class="marquee__item" lang="ta">பிறந்தநாள் வாழ்த்துகள்</li>
@@ -228,7 +223,6 @@
               <li class="marquee__item" lang="pt">Feliz aniversário!</li>
             </ul>
             <ul class="marquee__group" aria-hidden="true">
-              <li class="marquee__item" lang="en">Writing System</li>
               <li class="marquee__item" lang="en">Happy Birthday</li>
               <li class="marquee__item" lang="hi">जन्मदिन की शुभकामनाएँ</li>
               <li class="marquee__item" lang="ta">பிறந்தநாள் வாழ்த்துகள்</li>
@@ -242,10 +236,9 @@
           </div>
         </div>
 
-        <div class="marquee marquee--rose" aria-hidden="true">
+        <div class="marquee marquee--bottom" aria-hidden="true">
           <div class="marquee__track marquee__track--ltr">
             <ul class="marquee__group">
-              <li class="marquee__item" lang="en">Writing System</li>
               <li class="marquee__item" lang="en">Happy Birthday</li>
               <li class="marquee__item" lang="hi">जन्मदिन की शुभकामनाएँ</li>
               <li class="marquee__item" lang="ta">பிறந்தநாள் வாழ்த்துகள்</li>
@@ -257,7 +250,6 @@
               <li class="marquee__item" lang="pt">Feliz aniversário!</li>
             </ul>
             <ul class="marquee__group" aria-hidden="true">
-              <li class="marquee__item" lang="en">Writing System</li>
               <li class="marquee__item" lang="en">Happy Birthday</li>
               <li class="marquee__item" lang="hi">जन्मदिन की शुभकामनाएँ</li>
               <li class="marquee__item" lang="ta">பிறந்தநாள் வாழ்த்துகள்</li>
@@ -337,7 +329,6 @@
 
         <div class="letter-actions">
           <button type="button" class="btn" id="print-btn">Save this letter</button>
-          <p class="letter-actions__note">Choose “Save as PDF” in the print window.</p>
         </div>
       </section>
     </main>
@@ -378,10 +369,13 @@
   </div>
 
   <!-- =====================================================================
-       OPTIONAL MUSIC
-       Put your own licensed song at audio/birthday-song.mp3 to enable it.
-       (Change the path in CONFIG at the top of script.js if you use another name.)
-       Nothing plays until the visitor presses the button.
+       MUSIC
+       Put your song at audio/birthday-song.mp3 (change the path in CONFIG at the
+       top of script.js if you use another name).
+       The page tries to start it as soon as it opens. Phones and browsers often
+       block sound until the visitor touches the page, so if it is blocked it
+       starts on the first tap, click or key press instead.
+       The button (bottom-right) pauses and resumes it.
        ===================================================================== -->
   <div class="music">
     <button type="button" class="music__btn" id="music-btn" aria-disabled="true" aria-pressed="false" aria-label="Music not available" title="Music not available">
