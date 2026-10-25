@@ -10,7 +10,7 @@
    4. Section 2 - Marquees (pause when off-screen)
    5. Section 3 - Split-flap text
    6. Section 4 - Drift Wall gallery + lightbox
-   7. Optional music
+   7. Music (auto-start)
    8. Print button
    9. Start everything
    ========================================================================== */
@@ -22,9 +22,15 @@
      ======================================================================== */
 
   const CONFIG = {
-    /* Optional song. Put your licensed file at this path to switch music on.
-       Nothing plays until the visitor presses the music button. */
+    /* Song. Put your file at this path (or change the path).
+       The page tries to play it as soon as it opens. */
     musicSrc: 'audio/birthday-song.mp3',
+
+    /* true  = try to start the music when the page opens. Browsers often block
+               sound until the visitor touches the page, so if blocked it starts
+               on the first tap, click or key press.
+       false = music only plays when the visitor presses the music button. */
+    autoplayMusic: true,
 
     /* Screens at least this wide get the drifting perspective wall.
        Narrower screens (phones) get the calm two-column grid. */
@@ -139,9 +145,9 @@
         const hw = half * widthFactor;
         const a = clamp(alpha * alphaFactor, 0, 1);
         const grad = ctx.createLinearGradient(ox, oy, ex, ey);
-        grad.addColorStop(0, `rgba(176, 36, 68, ${a})`);
-        grad.addColorStop(0.55, `rgba(165, 35, 65, ${a * 0.45})`);
-        grad.addColorStop(1, 'rgba(165, 35, 65, 0)');
+        grad.addColorStop(0, `rgba(214, 48, 88, ${a})`);
+        grad.addColorStop(0.55, `rgba(190, 40, 76, ${a * 0.45})`);
+        grad.addColorStop(1, 'rgba(190, 40, 76, 0)');
         ctx.fillStyle = grad;
         ctx.beginPath();
         ctx.moveTo(ox, oy);
@@ -154,9 +160,9 @@
       /* Gloss streak */
       const gw = half * 0.1;
       const gloss = ctx.createLinearGradient(ox, oy, ex, ey);
-      gloss.addColorStop(0, `rgba(255, 226, 232, ${clamp(alpha * 0.55, 0, 1)})`);
-      gloss.addColorStop(0.5, `rgba(255, 214, 224, ${clamp(alpha * 0.2, 0, 1)})`);
-      gloss.addColorStop(1, 'rgba(255, 214, 224, 0)');
+      gloss.addColorStop(0, `rgba(255, 196, 210, ${clamp(alpha * 0.6, 0, 1)})`);
+      gloss.addColorStop(0.5, `rgba(255, 180, 198, ${clamp(alpha * 0.22, 0, 1)})`);
+      gloss.addColorStop(1, 'rgba(255, 180, 198, 0)');
       ctx.fillStyle = gloss;
       ctx.beginPath();
       ctx.moveTo(ox, oy);
@@ -175,9 +181,9 @@
 
       /* Warm glow where the light enters */
       const glow = ctx.createRadialGradient(ox, oy, 0, ox, oy, h * 0.9);
-      glow.addColorStop(0, 'rgba(165, 35, 65, 0.55)');
-      glow.addColorStop(0.45, 'rgba(165, 35, 65, 0.16)');
-      glow.addColorStop(1, 'rgba(165, 35, 65, 0)');
+      glow.addColorStop(0, 'rgba(200, 44, 82, 0.6)');
+      glow.addColorStop(0.45, 'rgba(190, 40, 76, 0.2)');
+      glow.addColorStop(1, 'rgba(190, 40, 76, 0)');
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, w, h);
 
@@ -797,9 +803,12 @@
 
 
   /* ========================================================================
-     7. OPTIONAL MUSIC
-     The button stays dimmed and disabled until the audio file loads.
-     Nothing ever plays by itself.
+     7. MUSIC
+     Tries to start by itself when the page opens. Browsers (especially phones)
+     block sound until the visitor interacts with the page, so when that
+     happens the music starts on the first tap, click or key press instead.
+     If the visitor pauses it, it stays paused. If the file is missing, the
+     button stays dimmed and nothing breaks.
      ======================================================================== */
   function initMusic() {
     const button = $('#music-btn');
@@ -807,6 +816,9 @@
     if (!button || !audio) return;
 
     let available = false;
+    let userPaused = false;     /* the visitor chose to pause: never restart on our own */
+    let autoTried = false;
+    let gestureArmed = false;
 
     function refresh() {
       const playing = !audio.paused;
@@ -821,9 +833,36 @@
         : 'Music not available. Add your song as ' + CONFIG.musicSrc;
     }
 
+    /* Start on the first real interaction (a tap on the music button itself is left to its own handler) */
+    function armGestureStart() {
+      if (gestureArmed) return;
+      gestureArmed = true;
+      const events = ['pointerdown', 'touchend', 'keydown', 'click'];
+      const start = (event) => {
+        if (event.target && event.target.closest && event.target.closest('#music-btn')) return;
+        events.forEach((name) => window.removeEventListener(name, start, true));
+        gestureArmed = false;
+        if (!userPaused && available && audio.paused) {
+          const attempt = audio.play();
+          if (attempt && attempt.catch) attempt.catch(() => {});
+        }
+      };
+      events.forEach((name) => window.addEventListener(name, start, { capture: true, passive: true }));
+    }
+
+    function tryAutoplay() {
+      if (!CONFIG.autoplayMusic || autoTried || userPaused || !available) return;
+      autoTried = true;
+      const attempt = audio.play();
+      if (attempt && attempt.catch) {
+        attempt.catch(() => armGestureStart());   /* blocked: wait for the first touch */
+      }
+    }
+
     function setAvailable(value) {
       available = value;
       refresh();
+      if (value) tryAutoplay();
     }
 
     audio.addEventListener('loadedmetadata', () => setAvailable(true));
@@ -836,6 +875,7 @@
     button.addEventListener('click', async () => {
       if (!available) return;
       if (audio.paused) {
+        userPaused = false;
         try {
           await audio.play();
         } catch (error) {
@@ -845,13 +885,14 @@
           }
         }
       } else {
+        userPaused = true;
         audio.pause();
       }
       refresh();
     });
 
     audio.loop = true;
-    audio.preload = 'metadata';
+    audio.preload = 'auto';
     audio.src = CONFIG.musicSrc;    /* set last, after the listeners above exist */
     refresh();
   }
