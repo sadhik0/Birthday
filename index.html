@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Happy Birthday, Reshu</title>
+  <meta name="description" content="A little birthday letter, just for Reshu.">
+  <meta name="theme-color" content="#F7D9DE">
+  <meta name="color-scheme" content="light">
+  <!-- Keeps search engines from listing this personal page.
+       NOTE: this is NOT security. A public GitHub Pages site can be opened by anyone who has the link. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Tiny inline favicon so the browser does not request a missing favicon.ico -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23A52341'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23FFF7F0' font-family='Georgia,serif'%3ER%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: elegant serif + clean sans + serif cuts for Devanagari, Tamil, Malayalam, Korean, Japanese.
+       If the visitor is offline, the CSS font stacks fall back to system fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&family=Noto+Serif+Devanagari:wght@500;600&family=Noto+Serif+Tamil:wght@500;600&family=Noto+Serif+Malayalam:wght@500;600&family=Noto+Serif+KR:wght@500;600&family=Noto+Serif+JP:wght@500;600&display=swap">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#wishes">Skip to the celebration</a>
+
+  <!-- =====================================================================
+       Shared SVG artwork (florals). Hidden 0x0 sheet, reused with <use>.
+       ===================================================================== -->
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g-leaf" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#6F8E78"/>
+        <stop offset="1" stop-color="#A9C2AA"/>
+      </linearGradient>
+      <linearGradient id="g-petal" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0" stop-color="#E8788F"/>
+        <stop offset="1" stop-color="#F9C9D3"/>
+      </linearGradient>
+      <radialGradient id="g-rose" cx=".38" cy=".32" r=".8">
+        <stop offset="0" stop-color="#F3A2B4"/>
+        <stop offset=".6" stop-color="#D4506B"/>
+        <stop offset="1" stop-color="#A52341"/>
+      </radialGradient>
+
+      <!-- Leaf: base at origin, tip points along +x (length 48) -->
+      <g id="leaf">
+        <path d="M0 0C10-13 32-14 48 0C32 14 10 13 0 0Z" fill="url(#g-leaf)"/>
+        <path d="M3 0H40" stroke="#fff" stroke-opacity=".4" stroke-width=".9" fill="none"/>
+      </g>
+
+      <!-- Single petal: base at origin, tip points up (length 35) -->
+      <path id="petal" d="M0 0C-15-9-15-31 0-35C15-31 15-9 0 0Z" fill="url(#g-petal)" stroke="#C9566F" stroke-opacity=".5" stroke-width=".8"/>
+
+      <!-- Five-petal blossom, centred on origin -->
+      <g id="blossom">
+        <use href="#petal"/>
+        <use href="#petal" transform="rotate(72)"/>
+        <use href="#petal" transform="rotate(144)"/>
+        <use href="#petal" transform="rotate(216)"/>
+        <use href="#petal" transform="rotate(288)"/>
+        <circle r="5.5" fill="#F4D27B"/>
+        <g fill="#A52341">
+          <circle cx="0" cy="-9" r="1.4"/>
+          <circle cx="8.6" cy="-2.8" r="1.4"/>
+          <circle cx="5.3" cy="7.3" r="1.4"/>
+          <circle cx="-5.3" cy="7.3" r="1.4"/>
+          <circle cx="-8.6" cy="-2.8" r="1.4"/>
+        </g>
+      </g>
+
+      <!-- Layered rosette, centred on origin, radius about 35 -->
+      <g id="rose">
+        <g fill="#E27D93">
+          <circle id="rose-scallop" cx="0" cy="-24" r="11"/>
+          <use href="#rose-scallop" transform="rotate(51.43)"/>
+          <use href="#rose-scallop" transform="rotate(102.86)"/>
+          <use href="#rose-scallop" transform="rotate(154.29)"/>
+          <use href="#rose-scallop" transform="rotate(205.71)"/>
+          <use href="#rose-scallop" transform="rotate(257.14)"/>
+          <use href="#rose-scallop" transform="rotate(308.57)"/>
+        </g>
+        <circle r="26" fill="url(#g-rose)"/>
+        <g fill="none" stroke="#8E1C38" stroke-opacity=".45" stroke-width="1.6" stroke-linecap="round">
+          <path d="M-20-6A21 21 0 0 1 8-19"/>
+          <path d="M18-8A19 19 0 0 1 14 14"/>
+          <path d="M-16 12A18 18 0 0 0 9 17"/>
+          <path d="M-10-4A11 11 0 0 1 6-9"/>
+          <path d="M9 2A9 9 0 0 1-3 8"/>
+        </g>
+        <circle r="4" fill="#8E1C38" fill-opacity=".55"/>
+        <path d="M-14-16C-6-24 8-24 16-16" stroke="#fff" stroke-opacity=".4" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- Corner cluster drawn for the TOP-LEFT corner (260 x 260).
+           Other corners mirror it with CSS transforms. -->
+      <g id="corner-cluster">
+        <!-- vines -->
+        <g fill="none" stroke="#6F8E78" stroke-width="2.4" stroke-linecap="round" opacity=".85">
+          <path d="M-4-4C70 30 120 80 168 214"/>
+          <path d="M-4-4C30 70 80 120 214 168"/>
+          <path d="M-4 14C80 8 150 26 238 8"/>
+          <path d="M14-4C8 80 26 150 8 238"/>
+        </g>
+        <!-- leaves -->
+        <use href="#leaf" transform="translate(-6 -6) rotate(12) scale(3.6)"/>
+        <use href="#leaf" transform="translate(-6 -6) rotate(78) scale(3.6)"/>
+        <use href="#leaf" transform="translate(-6 -6) rotate(34) scale(3)"/>
+        <use href="#leaf" transform="translate(-6 -6) rotate(56) scale(3)"/>
+        <use href="#leaf" transform="translate(86 14) rotate(-8) scale(1.7)"/>
+        <use href="#leaf" transform="translate(14 86) rotate(98) scale(1.7)"/>
+        <use href="#leaf" transform="translate(120 46) rotate(28) scale(1.8)"/>
+        <use href="#leaf" transform="translate(46 120) rotate(62) scale(1.8)"/>
+        <use href="#leaf" transform="translate(150 96) rotate(48) scale(1.5)"/>
+        <use href="#leaf" transform="translate(96 150) rotate(42) scale(1.5)"/>
+        <!-- scattered petals -->
+        <use href="#petal" transform="translate(198 98) rotate(112) scale(.42)" opacity=".75"/>
+        <use href="#petal" transform="translate(98 198) rotate(-22) scale(.42)" opacity=".75"/>
+        <use href="#petal" transform="translate(222 64) rotate(70) scale(.34)" opacity=".6"/>
+        <use href="#petal" transform="translate(64 222) rotate(20) scale(.34)" opacity=".6"/>
+        <!-- roses -->
+        <use href="#rose" transform="translate(58 58) scale(1.35)"/>
+        <use href="#rose" transform="translate(152 30) scale(.82)"/>
+        <use href="#rose" transform="translate(30 152) scale(.82)"/>
+        <!-- blossoms -->
+        <use href="#blossom" transform="translate(112 108) scale(.82)"/>
+        <use href="#blossom" transform="translate(206 24) scale(.55) rotate(20)"/>
+        <use href="#blossom" transform="translate(24 206) scale(.55) rotate(-15)"/>
+        <use href="#blossom" transform="translate(178 122) scale(.5) rotate(10)"/>
+        <use href="#blossom" transform="translate(122 178) scale(.5) rotate(-8)"/>
+        <!-- berries -->
+        <g fill="#A52341">
+          <circle cx="96" cy="14" r="3.2"/>
+          <circle cx="104" cy="22" r="2.6"/>
+          <circle cx="14" cy="96" r="3.2"/>
+          <circle cx="22" cy="104" r="2.6"/>
+          <circle cx="150" cy="78" r="2.8"/>
+          <circle cx="78" cy="150" r="2.8"/>
+          <circle cx="236" cy="14" r="2.6"/>
+          <circle cx="14" cy="236" r="2.6"/>
+        </g>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- Everything except the lightbox and music button lives in #page.
+       #page gets the `inert` attribute while the lightbox is open. -->
+  <div id="page">
+
+    <!-- =====================================================================
+         SECTION 1 - BIRTHDAY ENTRANCE
+         ===================================================================== -->
+    <header class="hero" id="top">
+      <canvas class="hero__rays" id="rays" aria-hidden="true"></canvas>
+      <div class="hero__veil" aria-hidden="true"></div>
+
+      <!-- Floral clusters, one per corner. Centre stays clear. -->
+      <svg class="corner corner--tl" viewBox="-10 -10 280 280" aria-hidden="true" focusable="false"><use href="#corner-cluster"/></svg>
+      <svg class="corner corner--tr" viewBox="-10 -10 280 280" aria-hidden="true" focusable="false"><use href="#corner-cluster"/></svg>
+      <svg class="corner corner--bl" viewBox="-10 -10 280 280" aria-hidden="true" focusable="false"><use href="#corner-cluster"/></svg>
+      <svg class="corner corner--br" viewBox="-10 -10 280 280" aria-hidden="true" focusable="false"><use href="#corner-cluster"/></svg>
+
+      <h1 class="sr-only">Happy Birthday, Reshu</h1>
+
+      <div class="hero__main">
+        <div class="scene" id="scene">
+          <p class="scene__eyebrow" aria-hidden="true">A little something for you</p>
+
+          <div class="scene__float">
+            <div class="env-back"></div>
+
+            <!-- The letter card that slides out of the envelope -->
+            <div class="letter-card" id="greeting-card">
+              <div class="letter-card__inner">
+                <svg class="letter-card__bloom" viewBox="-40 -40 80 80" aria-hidden="true" focusable="false"><use href="#blossom"/></svg>
+                <p class="greeting greeting--1">Happy Birthday</p>
+                <p class="greeting greeting--2">My Dear Reshu ❤️</p>
+              </div>
+            </div>
+
+            <!-- Envelope front (pocket) and flap -->
+            <div class="env-pocket-wrap">
+              <div class="env-pocket"></div>
+              <div class="env-pocket env-pocket--left"></div>
+              <div class="env-pocket env-pocket--right"></div>
+            </div>
+            <div class="env-flap-wrap"><div class="env-flap"></div></div>
+            <div class="env-seal" aria-hidden="true"><span>R</span></div>
+          </div>
+
+          <div class="scene__shadow" aria-hidden="true"></div>
+          <p class="scene__tap" aria-hidden="true">Tap to open</p>
+
+          <button type="button" class="scene__btn" id="open-btn" aria-expanded="false" aria-controls="greeting-card">
+            <span class="sr-only" id="open-btn-label">Open the birthday letter</span>
+          </button>
+        </div>
+        <p class="sr-only" role="status" aria-live="polite" id="hero-status"></p>
+      </div>
+
+      <a class="scroll-cue" href="#wishes">
+        <span>Scroll to discover</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </header>
+
+    <main id="main">
+
+      <!-- =====================================================================
+           SECTION 2 - TWO MULTILINGUAL MARQUEES
+           Each row holds the same list twice so the loop is seamless.
+           The second copy is aria-hidden so screen readers read the list once.
+           ===================================================================== -->
+      <section class="marquees" id="wishes" aria-label="Birthday wishes in many languages">
+        <div class="marquee marquee--ruby">
+          <div class="marquee__track marquee__track--rtl">
+            <ul class="marquee__group">
+              <li class="marquee__item" lang="en">Writing System</li>
+              <li class="marquee__item" lang="en">Happy Birthday</li>
+              <li class="marquee__item" lang="hi">जन्मदिन की शुभकामनाएँ</li>
+              <li class="marquee__item" lang="ta">பிறந்தநாள் வாழ்த்துகள்</li>
+              <li class="marquee__item" lang="ml">ജന്മദിനാശംസകൾ</li>
+              <li class="marquee__item" lang="ko">생일 축하합니다</li>
+              <li class="marquee__item" lang="ja">お誕生日おめでとう</li>
+              <li class="marquee__item" lang="es">¡Feliz cumpleaños!</li>
+              <li class="marquee__item" lang="fr">Joyeux anniversaire!</li>
+              <li class="marquee__item" lang="pt">Feliz aniversário!</li>
+            </ul>
+            <ul class="marquee__group" aria-hidden="true">
+              <li class="marquee__item" lang="en">Writing System</li>
+              <li class="marquee__item" lang="en">Happy Birthday</li>
+              <li class="marquee__item" lang="hi">जन्मदिन की शुभकामनाएँ</li>
+              <li class="marquee__item" lang="ta">பிறந்தநாள் வாழ்த்துகள்</li>
+              <li class="marquee__item" lang="ml">ജന്മദിനാശംസകൾ</li>
+              <li class="marquee__item" lang="ko">생일 축하합니다</li>
+              <li class="marquee__item" lang="ja">お誕生日おめでとう</li>
+              <li class="marquee__item" lang="es">¡Feliz cumpleaños!</li>
+              <li class="marquee__item" lang="fr">Joyeux anniversaire!</li>
+              <li class="marquee__item" lang="pt">Feliz aniversário!</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="marquee marquee--rose" aria-hidden="true">
+          <div class="marquee__track marquee__track--ltr">
+            <ul class="marquee__group">
+              <li class="marquee__item" lang="en">Writing System</li>
+              <li class="marquee__item" lang="en">Happy Birthday</li>
+              <li class="marquee__item" lang="hi">जन्मदिन की शुभकामनाएँ</li>
+              <li class="marquee__item" lang="ta">பிறந்தநாள் வாழ்த்துகள்</li>
+              <li class="marquee__item" lang="ml">ജന്മദിനാശംസകൾ</li>
+              <li class="marquee__item" lang="ko">생일 축하합니다</li>
+              <li class="marquee__item" lang="ja">お誕生日おめでとう</li>
+              <li class="marquee__item" lang="es">¡Feliz cumpleaños!</li>
+              <li class="marquee__item" lang="fr">Joyeux anniversaire!</li>
+              <li class="marquee__item" lang="pt">Feliz aniversário!</li>
+            </ul>
+            <ul class="marquee__group" aria-hidden="true">
+              <li class="marquee__item" lang="en">Writing System</li>
+              <li class="marquee__item" lang="en">Happy Birthday</li>
+              <li class="marquee__item" lang="hi">जन्मदिन की शुभकामनाएँ</li>
+              <li class="marquee__item" lang="ta">பிறந்தநாள் வாழ்த்துகள்</li>
+              <li class="marquee__item" lang="ml">ജന്മദിനാശംസകൾ</li>
+              <li class="marquee__item" lang="ko">생일 축하합니다</li>
+              <li class="marquee__item" lang="ja">お誕生日おめでとう</li>
+              <li class="marquee__item" lang="es">¡Feliz cumpleaños!</li>
+              <li class="marquee__item" lang="fr">Joyeux anniversaire!</li>
+              <li class="marquee__item" lang="pt">Feliz aniversário!</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION 3 - SPLIT-FLAP BIRTHDAY TYPOGRAPHY
+           script.js turns the data-flap text into flip cells.
+           Without JavaScript the plain text below stays visible.
+           ===================================================================== -->
+      <section class="flap-section" id="celebrate" aria-labelledby="flap-title">
+        <div class="flap-section__inner">
+          <h2 class="flap-title" id="flap-title" data-flap="HAPPY BIRTHDAY" aria-label="Happy Birthday">HAPPY BIRTHDAY</h2>
+          <div class="flap-number" data-flap="25" aria-hidden="true">25</div>
+          <p class="flap-date">6 November</p>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION 4 - DRIFT WALL PHOTO GALLERY
+           Tiles are created by script.js from the PHOTOS array.
+           >>> To replace photos or captions, edit the PHOTOS array at the top of script.js <<<
+           ===================================================================== -->
+      <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+        <div class="gallery__head">
+          <h2 id="gallery-title">A thousand little reasons to smile.</h2>
+          <p class="gallery__hint">Tap any photo to open it.</p>
+        </div>
+        <div class="drift drift--grid" id="drift">
+          <div class="drift__stage">
+            <div class="drift__wall" id="drift-wall"></div>
+          </div>
+        </div>
+        <noscript><p class="gallery__noscript">Turn on JavaScript to see the photos.</p></noscript>
+      </section>
+
+      <!-- =====================================================================
+           SECTION 5 - FINAL BIRTHDAY LETTER
+           ===================================================================== -->
+      <section class="letter-section" id="letter-section" aria-labelledby="letter-title">
+        <article class="letter" id="letter">
+          <svg class="corner corner--letter-tl" viewBox="-10 -10 280 280" aria-hidden="true" focusable="false"><use href="#corner-cluster"/></svg>
+          <svg class="corner corner--letter-br" viewBox="-10 -10 280 280" aria-hidden="true" focusable="false"><use href="#corner-cluster"/></svg>
+
+          <div class="letter__body">
+            <h2 class="letter__title" id="letter-title">Happy Birthday, My Dear Reshu ❤️</h2>
+            <div class="letter__rule" aria-hidden="true"><span></span></div>
+
+            <p class="letter__salutation">My dearest Reshu,</p>
+
+            <p>If I could give you one thing today, it would be the chance to see yourself through my eyes, even for just a moment. Maybe then you'd understand how special you are and how much happiness your presence can bring into someone's life.</p>
+
+            <p>Today is all about celebrating you — your beautiful heart, your smile, the little things that make you uniquely you, and all the wonderful things that make you the person you are.</p>
+
+            <p>I hope this new chapter brings you countless reasons to smile, dreams that slowly become reality, opportunities that make you proud, and people who remind you how deeply you are valued. On the difficult days, I hope you find the strength to keep going and the comfort of knowing that brighter days are still ahead.</p>
+
+            <p>And selfishly, I hope I get to be part of many of those beautiful days — sharing silly moments, making memories, laughing at things nobody else would understand, and finding happiness in the little things together.</p>
+
+            <p>You deserve a year filled with peace in your heart, warmth in your days, courage in your dreams, and a kind of happiness that stays long after the celebrations are over.</p>
+
+            <p>So here's to another chapter of your beautiful story, Reshu. May it be kinder, brighter, more exciting, and even more wonderful than you imagined.</p>
+
+            <p>Happy birthday, my dear. Keep smiling, keep dreaming, and never forget how special you are.</p>
+
+            <p class="letter__signoff">With all my love, always yours. ❤️</p>
+          </div>
+        </article>
+
+        <div class="letter-actions">
+          <button type="button" class="btn" id="print-btn">Save this letter</button>
+          <p class="letter-actions__note">Choose “Save as PDF” in the print window.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>For Reshu · 6 November</p>
+    </footer>
+  </div>
+
+  <!-- =====================================================================
+       LIGHTBOX (outside #page so it stays usable while #page is inert)
+       ===================================================================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
+    <div class="lightbox__backdrop" data-close></div>
+
+    <button type="button" class="lightbox__btn lightbox__close" id="lb-close" aria-label="Close photo viewer">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <button type="button" class="lightbox__btn lightbox__nav lightbox__nav--prev" id="lb-prev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <figure class="lightbox__figure" id="lb-figure">
+      <img class="lightbox__img" id="lb-img" alt="" draggable="false">
+      <p class="lightbox__missing" id="lb-missing">This photo has not been added yet.</p>
+      <figcaption class="lightbox__caption">
+        <span class="lightbox__count" id="lb-count"></span>
+        <span class="lightbox__text" id="lb-text"></span>
+      </figcaption>
+    </figure>
+
+    <button type="button" class="lightbox__btn lightbox__nav lightbox__nav--next" id="lb-next" aria-label="Next photo">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <p class="sr-only" role="status" aria-live="polite" id="lb-status"></p>
+  </div>
+
+  <!-- =====================================================================
+       OPTIONAL MUSIC
+       Put your own licensed song at audio/birthday-song.mp3 to enable it.
+       (Change the path in CONFIG at the top of script.js if you use another name.)
+       Nothing plays until the visitor presses the button.
+       ===================================================================== -->
+  <div class="music">
+    <button type="button" class="music__btn" id="music-btn" aria-disabled="true" aria-pressed="false" aria-label="Music not available" title="Music not available">
+      <svg class="music__icon music__icon--play" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+      <svg class="music__icon music__icon--pause" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+    </button>
+    <audio id="bgm" preload="none"></audio>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
